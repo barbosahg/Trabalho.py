@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Vendas de Trufas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Vendas de Trufas</h1>
+    </header>
+
+    <main>
+        
+        <section class="menu" id="menu">
+            <h2>Menu</h2>
+            <button onclick="showSection('register')">Registrar Venda</button>
+            <button onclick="loadData('/resumo', 'summary', 'summary-output')">Resumo de Vendas</button>
+            <button onclick="loadData('/top-sellers', 'top-sellers', 'top-sellers-output')">Sabores Mais Vendidos</button>
+            <button onclick="loadData('/best-hours', 'best-hours', 'best-hours-output')">Horário com Mais Vendas</button>
+        </section>
+
+        <section id="register" class="hidden">
+            <h2>Registrar Venda</h2>
+            <form id="register-form">
+                <label for="day">Dia da Semana:</label>
+                <input type="text" id="day" placeholder="Ex: terça-feira">
+
+                <label for="time">Horário (HH:MM):</label>
+                <input type="time" id="time">
+
+                <label for="flavor">Sabor:</label>
+                <input type="text" id="flavor" placeholder="Ex: brigadeiro">
+
+                <label for="quantity">Quantidade:</label>
+                <input type="number" id="quantity" min="1">
+
+                <button type="button" onclick="registerSale()">Registrar</button>
+            </form>
+            <button onclick="returnToMenu()">Voltar</button>
+        </section>
+
+        <section id="summary" class="hidden">
+            <h2>Resumo de Vendas</h2>
+            <div id="summary-output"></div>
+            <button onclick="returnToMenu()">Voltar</button>
+        </section>
+
+        <section id="top-sellers" class="hidden">
+            <h2>Sabores Mais Vendidos</h2>
+            <div id="top-sellers-output"></div>
+            <button onclick="returnToMenu()">Voltar</button>
+        </section>
+
+        <section id="best-hours" class="hidden">
+            <h2>Horário com Mais Vendas</h2>
+            <div id="best-hours-output"></div>
+            <button onclick="returnToMenu()">Voltar</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>@yay.doces</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
